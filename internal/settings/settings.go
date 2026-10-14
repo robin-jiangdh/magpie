@@ -24,14 +24,14 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/yetone/magpie/internal/appdir"
-	"github.com/yetone/magpie/internal/catalog"
-	"github.com/yetone/magpie/internal/edit"
-	"github.com/yetone/magpie/internal/filememo"
-	"github.com/yetone/magpie/internal/fonts"
-	"github.com/yetone/magpie/internal/lastgood"
-	"github.com/yetone/magpie/internal/redact"
-	"github.com/yetone/magpie/internal/steady"
+	"github.com/robin-jiangdh/magpie/internal/appdir"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/filememo"
+	"github.com/robin-jiangdh/magpie/internal/fonts"
+	"github.com/robin-jiangdh/magpie/internal/lastgood"
+	"github.com/robin-jiangdh/magpie/internal/redact"
+	"github.com/robin-jiangdh/magpie/internal/steady"
 )
 
 // Settings is what the user chose. "" and "system" both mean "follow the OS".
@@ -239,7 +239,7 @@ type Settings struct {
 	// through, its prefix put before the release's github.com URL
 	// (https://mirror.example/https://github.com/…): "" for none, which is
 	// the default — magpie names no mirror of its own. The file is still
-	// checked against the SHA-256 the update feed at usemagpie.ai gives,
+	// checked against the SHA-256 the update feed gives,
 	// never one from the mirror. magpie update mirror sets it.
 	UpdateMirror string `json:"updateMirror,omitempty"`
 	// Vision is the model that describes an image to a model that can't see
