@@ -16,6 +16,7 @@ import (
 
 	"github.com/yetone/magpie/internal/agent"
 	"github.com/yetone/magpie/internal/catalog"
+	"github.com/yetone/magpie/internal/checkin"
 	"github.com/yetone/magpie/internal/gateway"
 	"github.com/yetone/magpie/internal/provider"
 	"github.com/yetone/magpie/internal/settings"
@@ -236,6 +237,24 @@ type providerJSON struct {
 	// Move is where a built-in subscription stands with the community
 	// plugin that can run it (provider.Move): set for those that have one
 	Move *moveJSON `json:"move,omitempty"`
+	// Checkin is the daily check-in state for the row's pill; nil when the
+	// provider has no check-in configured (see internal/checkin)
+	Checkin *checkinJSON `json:"checkin,omitempty"`
+	// CheckinCredSet says a check-in credential is saved for it — never
+	// the credential itself
+	CheckinCredSet bool `json:"checkinCredSet,omitempty"`
+}
+
+// checkinJSON is a provider's daily check-in configuration and last
+// outcome, as the Providers page shows them.
+type checkinJSON struct {
+	Enabled       bool   `json:"enabled"`
+	LoginMethod   string `json:"loginMethod,omitempty"`
+	Mechanism     string `json:"mechanism,omitempty"`
+	CheckinAfter  string `json:"checkinAfter,omitempty"`
+	LastCheckinAt string `json:"lastCheckinAt,omitempty"`
+	LastSuccess   *bool  `json:"lastSuccess,omitempty"`
+	LastError     string `json:"lastError,omitempty"`
 }
 
 type moveJSON struct {
@@ -747,6 +766,14 @@ func providerInfo(p provider.Provider, agents []agentUse) providerJSON {
 		out.Fetched = &t
 	}
 	out.ListError = p.ListError()
+	if c := p.Checkin; c != nil {
+		out.Checkin = &checkinJSON{
+			Enabled: c.Enabled, LoginMethod: c.LoginMethod, Mechanism: c.Mechanism,
+			CheckinAfter: c.CheckinAfter, LastCheckinAt: c.LastCheckinAt,
+			LastSuccess: c.LastSuccess, LastError: c.LastError,
+		}
+		out.CheckinCredSet = checkin.Has(p.ID)
+	}
 	for _, a := range agents {
 		pa := providerAgent{ID: a.ID, Name: a.Name, Icon: a.Icon, Current: a.pid == p.ID, Model: a.model}
 		if a.inGroup {
@@ -887,6 +914,31 @@ var (
 // place until it is run again.
 func moveContext(r *http.Request) (context.Context, context.CancelFunc) {
 	return context.WithTimeout(context.WithoutCancel(r.Context()), 10*time.Minute)
+}
+
+// checkinAPIBase is the API base URL a check-in site is derived from: the
+// first address the provider serves models at.
+func checkinAPIBase(p *provider.Provider) string {
+	for _, u := range []string{p.Chat, p.Responses, p.Anthropic, p.Gemini} {
+		if u = strings.TrimSpace(u); u != "" {
+			return u
+		}
+	}
+	return ""
+}
+
+// checkinStateOf is the provider's check-in state for JSON replies; nil
+// when it has no check-in configured.
+func checkinStateOf(p *provider.Provider) *checkinJSON {
+	c := p.Checkin
+	if c == nil {
+		return nil
+	}
+	return &checkinJSON{
+		Enabled: c.Enabled, LoginMethod: c.LoginMethod, Mechanism: c.Mechanism,
+		CheckinAfter: c.CheckinAfter, LastCheckinAt: c.LastCheckinAt,
+		LastSuccess: c.LastSuccess, LastError: c.LastError,
+	}
 }
 
 func providerRoutes(mux *http.ServeMux, w Windows) {
@@ -1138,6 +1190,13 @@ func providerRoutes(mux *http.ServeMux, w Windows) {
 			// NoModels, for save: the editor's Select none, kept with no
 			// model picked (#1818); a save that leaves it out keeps it
 			NoModels *bool `json:"noModels"`
+			// CheckinCredential, for checkin: the credential as typed in
+			// the editor, tried without saving; for checkin_creds: the
+			// credential to save to the separate credentials file
+			CheckinCredential *checkin.Credential `json:"checkinCredential"`
+			// CheckinBase, for checkin_probe: the site URL typed, in place
+			// of the provider's saved API base
+			CheckinBase string `json:"checkinBase"`
 		}
 		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 			fail(rw, err)
@@ -1475,6 +1534,13 @@ func providerRoutes(mux *http.ServeMux, w Windows) {
 				}
 				if in.Icon == "" && old != nil && in.Preset == "" {
 					in.Icon = old.Icon
+				}
+				// the check-in outcome survives a save: the editor only
+				// sends the configuration, never the last attempt's state
+				if in.Checkin != nil && old != nil && old.Checkin != nil {
+					in.Checkin.LastCheckinAt = old.Checkin.LastCheckinAt
+					in.Checkin.LastSuccess = old.Checkin.LastSuccess
+					in.Checkin.LastError = old.Checkin.LastError
 				}
 				if err := provider.Save(in); err != nil {
 					fail(rw, err)
@@ -1827,6 +1893,192 @@ func providerRoutes(mux *http.ServeMux, w Windows) {
 				Dropped  []string     `json:"dropped,omitempty"`
 				Provider providerJSON `json:"provider"`
 			}{len(ms), dropped, providerInfo(*p, agentUses(agent.Detected(), provider.GroupFinder()))})
+			return
+		case "prune":
+			// 移除无效模型：逐个测试暴露给 agents 的模型，把没通过的从 picks 里去掉
+			p, err := provider.Find(in.ID)
+			if err != nil {
+				fail(rw, err)
+				return
+			}
+			if why := p.ModelTest(); why != "" {
+				fail(rw, errors.New(why))
+				return
+			}
+			var ids []string
+			for _, m := range p.Exposed() {
+				ids = append(ids, m.ID)
+			}
+			if len(ids) == 0 {
+				fail(rw, errors.New("no models to test"))
+				return
+			}
+			ctx, cancel := context.WithTimeout(r.Context(), 5*time.Minute)
+			defer cancel()
+			results := p.TestModels(ctx, ids)
+			var keep, removed []string
+			errs := map[string]string{}
+			for i, id := range ids {
+				if i < len(results) && results[i].OK {
+					keep = append(keep, id)
+					continue
+				}
+				removed = append(removed, id)
+				if i < len(results) && results[i].Error != "" {
+					errs[id] = results[i].Error
+				}
+			}
+			if len(keep) == 0 {
+				// 全都没通过：多半是 key 或网络的问题，不动 picks
+				fail(rw, errors.New("every model failed to answer: the key or the network is likely the problem, so nothing was removed"))
+				return
+			}
+			if _, err := agent.Reseat(func() error { return provider.SetModels(in.ID, keep) }); err != nil {
+				fail(rw, err)
+				return
+			}
+			if q, err := provider.Find(p.ID); err == nil {
+				p = q
+			}
+			writeJSON(rw, struct {
+				Removed  []string          `json:"removed"`
+				Kept     int               `json:"kept"`
+				Errors   map[string]string `json:"errors,omitempty"`
+				Provider providerJSON      `json:"provider"`
+			}{removed, len(keep), errs, providerInfo(*p, agentUses(agent.Detected(), provider.GroupFinder()))})
+			return
+		case "checkin":
+			// 手动签到一次：读配置+凭据 → 探测站点 → 签到 → 回写状态
+			p, err := provider.Find(in.ID)
+			if err != nil {
+				fail(rw, err)
+				return
+			}
+			cfg := p.Checkin
+			if in.Checkin != nil {
+				cfg = in.Checkin // the editor's form as it stands, tried before a Save
+			}
+			if cfg == nil || !cfg.Enabled {
+				fail(rw, errors.New("check-in is not enabled for this provider"))
+				return
+			}
+			cred, _ := checkin.Get(in.ID)
+			if req.CheckinCredential != nil {
+				cred = *req.CheckinCredential // typed, tried without saving
+			}
+			ctx, cancel := context.WithTimeout(r.Context(), 2*time.Minute)
+			defer cancel()
+			site, err := checkin.ResolveSite(ctx, checkinAPIBase(p))
+			if err != nil {
+				fail(rw, err)
+				return
+			}
+			out := checkin.CheckIn(ctx, checkin.Login{
+				LoginMethod: cfg.LoginMethod,
+				Username:    cred.Username, Password: cred.Password,
+				AccessToken: cred.AccessToken, Session: cred.Session,
+				APIUser: cred.APIUser,
+			}, site, cfg.Mechanism)
+			// a rotated session is worth keeping: without it the next
+			// check-in fails on the stale one
+			if req.CheckinCredential == nil && out.Session != "" && out.Session != cred.Session {
+				cred.Session = out.Session
+				if err := checkin.Save(in.ID, cred); err != nil {
+					fail(rw, err)
+					return
+				}
+			}
+			// write the attempt back to the saved provider's check-in
+			// state; a typed-only attempt leaves the saved one alone
+			if q, err := provider.Find(p.ID); err == nil && q.Checkin != nil {
+				qc := *q.Checkin
+				ok := out.Success
+				qc.LastCheckinAt = time.Now().Format(time.RFC3339)
+				qc.LastSuccess = &ok
+				qc.LastError = out.Error
+				q.Checkin = &qc
+				if err := provider.Save(*q); err != nil {
+					fail(rw, err)
+					return
+				}
+				p = q
+			}
+			writeJSON(rw, struct {
+				checkin.Outcome
+				Checkin *checkinJSON `json:"checkin"`
+			}{out, checkinStateOf(p)})
+			return
+		case "checkin_probe":
+			// 探测站点机制，供编辑器的"检测站点"用
+			base := strings.TrimSpace(req.CheckinBase)
+			if base == "" {
+				p, err := provider.Find(in.ID)
+				if err != nil {
+					fail(rw, err)
+					return
+				}
+				base = checkinAPIBase(p)
+			}
+			if base == "" {
+				fail(rw, errors.New("no API base URL to probe"))
+				return
+			}
+			ctx, cancel := context.WithTimeout(r.Context(), 60*time.Second)
+			defer cancel()
+			site, err := checkin.ResolveSite(ctx, base)
+			if err != nil {
+				fail(rw, err)
+				return
+			}
+			writeJSON(rw, struct {
+				checkin.SiteInfo
+				Mechanism string `json:"mechanism"`
+			}{site, site.Mechanism()})
+			return
+		case "checkin_status":
+			// 上次签到状态；站点有 status 路由时顺带确认"今日是否已签"
+			p, err := provider.Find(in.ID)
+			if err != nil {
+				fail(rw, err)
+				return
+			}
+			st := map[string]any{"enabled": false}
+			if c := p.Checkin; c != nil {
+				st = map[string]any{
+					"enabled": c.Enabled, "lastCheckinAt": c.LastCheckinAt,
+					"lastSuccess": c.LastSuccess, "lastError": c.LastError,
+				}
+				if c.Enabled {
+					if cred, ok := checkin.Get(p.ID); ok {
+						ctx, cancel := context.WithTimeout(r.Context(), 30*time.Second)
+						if site, err := checkin.ResolveSite(ctx, checkinAPIBase(p)); err == nil && site.StatusPath != "" {
+							cs := checkin.CheckinStatus(ctx, site, checkin.Creds{
+								Session: cred.Session, AccessToken: cred.AccessToken, APIUser: cred.APIUser,
+							})
+							st["today"] = cs.Today
+							st["awardedToday"] = cs.AwardedToday
+						}
+						cancel()
+					}
+				}
+			}
+			writeJSON(rw, st)
+			return
+		case "checkin_creds":
+			// 凭据只写独立凭据文件，不进 providers.json
+			if in.ID == "" {
+				fail(rw, errors.New("missing provider id"))
+				return
+			}
+			if req.CheckinCredential == nil {
+				fail(rw, errors.New("missing credential"))
+				return
+			}
+			if err := checkin.Save(in.ID, *req.CheckinCredential); err != nil {
+				fail(rw, err)
+				return
+			}
+			writeJSON(rw, map[string]any{"saved": true, "has": checkin.Has(in.ID)})
 			return
 		default:
 			http.NotFound(rw, r)
