@@ -371,9 +371,28 @@ type Provider struct {
 	// for by name (#116).
 	Tucked bool `json:"tucked,omitempty"`
 
+	// Checkin is the daily check-in configuration for this vendor's site;
+	// nil = no check-in. It holds no secrets: credentials are kept apart
+	// in the checkin credentials file (see internal/checkin).
+	Checkin *CheckinConfig `json:"checkin,omitempty"`
+
 	// Account is set when the provider is an agent the user signed in to
 	// (see account.go); it is derived, never stored.
 	Account *Account `json:"-"`
+}
+
+// CheckinConfig is a New API style site's daily check-in configuration.
+// It carries no secrets: the credential lives in the separate checkin
+// credentials file (see internal/checkin), keyed by provider id.
+type CheckinConfig struct {
+	Enabled      bool   `json:"enabled"`
+	LoginMethod  string `json:"loginMethod"`            // password | access_token | session
+	Mechanism    string `json:"mechanism,omitempty"`    // endpoint | login_bonus | auto (probe)
+	CheckinAfter string `json:"checkinAfter,omitempty"` // HH:MM, when the site opens check-in
+	// The last attempt's outcome, written back after each check-in.
+	LastCheckinAt string `json:"lastCheckinAt,omitempty"` // RFC3339
+	LastSuccess   *bool  `json:"lastSuccess,omitempty"`
+	LastError     string `json:"lastError,omitempty"`
 }
 
 type file struct {
