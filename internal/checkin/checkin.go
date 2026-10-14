@@ -135,8 +135,8 @@ func (o Outcome) Gain() *float64 {
 	return o.Delta()
 }
 
-// CheckinStatus is a read-only look at a site's check-in state.
-type CheckinStatus struct {
+// CheckinStatusInfo is a read-only look at a site's check-in state.
+type CheckinStatusInfo struct {
 	Today        *bool    `json:"today,omitempty"`
 	AwardedToday *float64 `json:"awardedToday,omitempty"`
 	Reward       *float64 `json:"reward,omitempty"`

@@ -1,10 +1,12 @@
 // Package update keeps magpie current. Builds are published as GitHub
-// releases of yetone/magpie-releases; usemagpie.ai/api/latest describes the
-// newest one: its version, notes, and every file with its SHA-256.
+// releases of robin-jiangdh/magpie; the GitHub API describes the newest
+// one: its version, notes, and files, with every file's SHA-256 taken from
+// the release's sha256sums.txt.
 //
 // The macOS app replaces its own bundle: the new zip is downloaded, checked
 // against its hash, unpacked, and accepted only if it is signed by the same
-// team as the app already installed. A bare binary (the terminal build,
+// team as the app already installed — or unsigned on both sides, for a
+// build without Apple Developer signing. A bare binary (the terminal build,
 // and the desktop app on Windows and Linux) replaces itself the same way,
 // minus the signature.
 package update
@@ -35,16 +37,24 @@ import (
 	"github.com/robin-jiangdh/magpie/internal/source"
 )
 
-// Site is magpie's home; its /api/latest is the update feed.
-const Site = "https://usemagpie.ai"
+// repo is the GitHub repository whose releases this build updates from.
+const repo = "robin-jiangdh/magpie"
 
-// Feed is where the newest release is described. MAGPIE_UPDATE_FEED points
-// it elsewhere, for testing an update against a local server.
+// apiBase is the GitHub API root for the repo.
+const apiBase = "https://api.github.com/repos/" + repo
+
+// Site is where a human downloads a release when the updater can't do it
+// itself.
+const Site = "https://github.com/" + repo + "/releases"
+
+// Feed is where the newest release is described: the repo's latest GitHub
+// release. MAGPIE_UPDATE_FEED points it elsewhere, for testing an update
+// against a local server.
 func Feed() string {
 	if f := os.Getenv("MAGPIE_UPDATE_FEED"); f != "" {
 		return f
 	}
-	return Site + "/api/latest"
+	return apiBase + "/releases/latest"
 }
 
 // Release is one published version.
@@ -78,12 +88,15 @@ func proxied() http.RoundTripper {
 func Latest(ctx context.Context) (*Release, error) { return LatestIn(ctx, "") }
 
 // LatestIn asks the feed for the newest release, its notes in lang (see
-// InLang): the app's language, which What's new follows.
+// InLang): the app's language, which What's new follows. The feed is the
+// repo's latest GitHub release; its JSON is translated into a Release,
+// with every file's SHA-256 taken from the release's sha256sums.txt.
 func LatestIn(ctx context.Context, lang string) (*Release, error) {
 	req, err := http.NewRequestWithContext(ctx, "GET", withLang(Feed(), lang), nil)
 	if err != nil {
 		return nil, err
 	}
+	req.Header.Set("User-Agent", githubUserAgent)
 	res, err := source.Do(client, req)
 	if err != nil {
 		return nil, err
@@ -92,8 +105,15 @@ func LatestIn(ctx context.Context, lang string) (*Release, error) {
 	if res.StatusCode != 200 {
 		return nil, fmt.Errorf("update feed: %s", res.Status)
 	}
+	body, err := io.ReadAll(io.LimitReader(res.Body, 8<<20))
+	if err != nil {
+		return nil, fmt.Errorf("update feed: %w", err)
+	}
+	if isGitHubRelease(body) {
+		return githubLatest(ctx, body)
+	}
 	var r Release
-	if err := json.NewDecoder(res.Body).Decode(&r); err != nil {
+	if err := json.Unmarshal(body, &r); err != nil {
 		return nil, fmt.Errorf("update feed: %w", err)
 	}
 	if parse(r.Version) == nil {
@@ -101,6 +121,105 @@ func LatestIn(ctx context.Context, lang string) (*Release, error) {
 	}
 	r.Notes = InLang(r.Notes, lang)
 	return &r, nil
+}
+
+// githubUserAgent rides on GitHub API requests: the API rejects requests
+// with no User-Agent.
+const githubUserAgent = "magpie-updater"
+
+// isGitHubRelease reports whether body is a GitHub release object rather
+// than the feed's own Release JSON.
+func isGitHubRelease(body []byte) bool {
+	var probe struct {
+		TagName string `json:"tag_name"`
+	}
+	return json.Unmarshal(body, &probe) == nil && probe.TagName != ""
+}
+
+// githubRelease is the slice of GitHub's release JSON the updater needs.
+type githubRelease struct {
+	TagName string        `json:"tag_name"`
+	Body    string        `json:"body"`
+	HTMLURL string        `json:"html_url"`
+	Assets  []githubAsset `json:"assets"`
+}
+
+// githubAsset is one file attached to a GitHub release.
+type githubAsset struct {
+	Name               string `json:"name"`
+	BrowserDownloadURL string `json:"browser_download_url"`
+	Size               int64  `json:"size"`
+}
+
+// githubLatest translates a GitHub release object into a Release. The
+// per-file SHA-256 checksums come from the release's sha256sums.txt asset,
+// which the release workflow publishes beside the binaries; a file with no
+// published checksum is left out, and the downloader refuses a release that
+// lists no checksum for the file it needs.
+func githubLatest(ctx context.Context, body []byte) (*Release, error) {
+	var g githubRelease
+	if err := json.Unmarshal(body, &g); err != nil {
+		return nil, fmt.Errorf("update feed: %w", err)
+	}
+	version := strings.TrimPrefix(strings.TrimSpace(g.TagName), "v")
+	if parse(version) == nil {
+		return nil, fmt.Errorf("update feed: no version")
+	}
+	sums, err := githubChecksums(ctx, g.Assets)
+	if err != nil {
+		return nil, err
+	}
+	r := &Release{Version: version, Notes: g.Body, URL: g.HTMLURL, Assets: map[string]Asset{}}
+	for _, a := range g.Assets {
+		if a.Name == "sha256sums.txt" {
+			continue
+		}
+		sha, ok := sums[a.Name]
+		if !ok {
+			continue
+		}
+		r.Assets[a.Name] = Asset{URL: a.BrowserDownloadURL, Size: a.Size, SHA256: sha}
+	}
+	return r, nil
+}
+
+// githubChecksums downloads the release's sha256sums.txt and maps each
+// listed file name to its hex SHA-256.
+func githubChecksums(ctx context.Context, assets []githubAsset) (map[string]string, error) {
+	var u string
+	for _, a := range assets {
+		if a.Name == "sha256sums.txt" {
+			u = a.BrowserDownloadURL
+			break
+		}
+	}
+	if u == "" {
+		return nil, errors.New("update feed: the release publishes no sha256sums.txt")
+	}
+	req, err := http.NewRequestWithContext(ctx, "GET", u, nil)
+	if err != nil {
+		return nil, err
+	}
+	req.Header.Set("User-Agent", githubUserAgent)
+	res, err := source.Do(client, req)
+	if err != nil {
+		return nil, err
+	}
+	defer res.Body.Close()
+	if res.StatusCode != 200 {
+		return nil, fmt.Errorf("update feed: sha256sums.txt: %s", res.Status)
+	}
+	body, err := io.ReadAll(io.LimitReader(res.Body, 1<<20))
+	if err != nil {
+		return nil, fmt.Errorf("update feed: sha256sums.txt: %w", err)
+	}
+	sums := map[string]string{}
+	for _, line := range strings.Split(string(body), "\n") {
+		if f := strings.Fields(line); len(f) == 2 {
+			sums[f[1]] = f[0]
+		}
+	}
+	return sums, nil
 }
 
 // Released reports whether v is a release version rather than a build from
@@ -285,12 +404,16 @@ func Stage(ctx context.Context, rel *Release, bundle string) (string, error) {
 }
 
 // sameSigner accepts app only if its signature is intact and made by the
-// team that signed the bundle it replaces.
+// team that signed the bundle it replaces. Unsigned on both sides is fine
+// too: a build without Apple Developer signing has no team to match.
 func sameSigner(ctx context.Context, bundle, app string) error {
+	want, got := team(ctx, bundle), team(ctx, app)
+	if want == "" && got == "" {
+		return nil
+	}
 	if b, err := proc.CommandContext(ctx, "codesign", "--verify", "--deep", "--strict", app).CombinedOutput(); err != nil {
 		return fmt.Errorf("the downloaded app's signature is broken: %s", strings.TrimSpace(string(b)))
 	}
-	want, got := team(ctx, bundle), team(ctx, app)
 	if want != got {
 		return fmt.Errorf("the downloaded app is signed by %q, not %q", got, want)
 	}
