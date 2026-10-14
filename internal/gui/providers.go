@@ -772,7 +772,7 @@ func providerInfo(p provider.Provider, agents []agentUse) providerJSON {
 			CheckinAfter: c.CheckinAfter, LastCheckinAt: c.LastCheckinAt,
 			LastSuccess: c.LastSuccess, LastError: c.LastError,
 		}
-		out.CheckinCredSet = checkin.Has(p.ID)
+		out.CheckinCredSet, _ = checkin.Has(p.ID)
 	}
 	for _, a := range agents {
 		pa := providerAgent{ID: a.ID, Name: a.Name, Icon: a.Icon, Current: a.pid == p.ID, Model: a.model}
@@ -1297,6 +1297,7 @@ func providerRoutes(mux *http.ServeMux, w Windows) {
 				pr.Unredacted = in.Unredacted
 				pr.PassUserAgent = in.PassUserAgent
 				pr.AuthHeader = in.AuthHeader
+				pr.Checkin = in.Checkin
 				if in.Name != "" {
 					pr.Name = in.Name
 				}
@@ -1962,7 +1963,11 @@ func providerRoutes(mux *http.ServeMux, w Windows) {
 				fail(rw, errors.New("check-in is not enabled for this provider"))
 				return
 			}
-			cred, _ := checkin.Get(in.ID)
+			cred, _, err := checkin.Get(in.ID)
+			if err != nil {
+				fail(rw, err)
+				return
+			}
 			if req.CheckinCredential != nil {
 				cred = *req.CheckinCredential // typed, tried without saving
 			}
@@ -2049,16 +2054,18 @@ func providerRoutes(mux *http.ServeMux, w Windows) {
 					"lastSuccess": c.LastSuccess, "lastError": c.LastError,
 				}
 				if c.Enabled {
-					if cred, ok := checkin.Get(p.ID); ok {
-						ctx, cancel := context.WithTimeout(r.Context(), 30*time.Second)
-						if site, err := checkin.ResolveSite(ctx, checkinAPIBase(p)); err == nil && site.StatusPath != "" {
-							cs := checkin.CheckinStatus(ctx, site, checkin.Creds{
-								Session: cred.Session, AccessToken: cred.AccessToken, APIUser: cred.APIUser,
-							})
-							st["today"] = cs.Today
-							st["awardedToday"] = cs.AwardedToday
-						}
-						cancel()
+					if cred, ok, cerr := checkin.Get(p.ID); cerr == nil && ok {
+						func() {
+							ctx, cancel := context.WithTimeout(r.Context(), 30*time.Second)
+							defer cancel()
+							if site, err := checkin.ResolveSite(ctx, checkinAPIBase(p)); err == nil && site.StatusPath != "" {
+								cs := checkin.CheckinStatus(ctx, site, checkin.Creds{
+									Session: cred.Session, AccessToken: cred.AccessToken, APIUser: cred.APIUser,
+								})
+								st["today"] = cs.Today
+								st["awardedToday"] = cs.AwardedToday
+							}
+						}()
 					}
 				}
 			}
@@ -2078,7 +2085,8 @@ func providerRoutes(mux *http.ServeMux, w Windows) {
 				fail(rw, err)
 				return
 			}
-			writeJSON(rw, map[string]any{"saved": true, "has": checkin.Has(in.ID)})
+			has, _ := checkin.Has(in.ID)
+			writeJSON(rw, map[string]any{"saved": true, "has": has})
 			return
 		default:
 			http.NotFound(rw, r)
