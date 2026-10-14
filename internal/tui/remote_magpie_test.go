@@ -8,7 +8,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // A remote magpie is added from the TUI with its address, as the app's

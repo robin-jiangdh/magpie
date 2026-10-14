@@ -3,8 +3,8 @@ package gateway
 import (
 	"testing"
 
-	"github.com/yetone/magpie/internal/provider"
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 // With provider search Off, this magpie's model list no longer tells

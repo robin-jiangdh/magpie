@@ -12,7 +12,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
 )
 
 // OpenCodeVersion is the OpenCode release magpie says it is to OpenCode's

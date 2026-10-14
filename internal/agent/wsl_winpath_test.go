@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/testenv"
+	"github.com/robin-jiangdh/magpie/internal/testenv"
 )
 
 // WSL puts Windows' PATH on the distro's, so `command -v pi` there finds

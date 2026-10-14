@@ -6,9 +6,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/edit"
-	"github.com/yetone/magpie/internal/provider"
-	"github.com/yetone/magpie/internal/testenv"
+	"github.com/robin-jiangdh/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/testenv"
 )
 
 // The 「接入」 switch keeps an agent on the model it was on, now through

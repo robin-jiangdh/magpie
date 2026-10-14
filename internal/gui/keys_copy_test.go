@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // Each of a provider's several keys copies its own (#1480, IamMiao): the

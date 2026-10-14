@@ -9,7 +9,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // A long Codex conversation's compaction, as Codex sends it: the history

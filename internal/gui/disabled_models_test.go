@@ -8,9 +8,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/agentenv"
-	"github.com/yetone/magpie/internal/provider"
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/agentenv"
+	"github.com/robin-jiangdh/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 // Settings' disabled models (#1867) are set on their own: the page is told

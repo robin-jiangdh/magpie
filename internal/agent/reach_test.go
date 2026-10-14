@@ -8,9 +8,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/edit"
-	"github.com/yetone/magpie/internal/gateway"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/gateway"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // fakeReach answers reachProbe from answers (a base missing is down), and

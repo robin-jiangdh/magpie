@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // Cline's free models (cline-free/…) answer 403 "only available via Cline

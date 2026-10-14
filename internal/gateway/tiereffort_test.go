@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/catalog"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // A model asked for at an effort of its own, "<model>:<level>" — a Claude

@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/testenv"
+	"github.com/robin-jiangdh/magpie/internal/testenv"
 )
 
 func balCard(user, balance string) SubscriptionQuota {

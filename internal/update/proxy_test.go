@@ -12,7 +12,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 // The update feed and a release's download go through the proxy set in

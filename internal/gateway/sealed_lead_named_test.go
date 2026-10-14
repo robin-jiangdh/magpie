@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // chatOnlyOn is a provider serving Chat Completions only, as the Qoder

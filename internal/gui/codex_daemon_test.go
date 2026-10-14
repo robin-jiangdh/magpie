@@ -11,7 +11,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/testenv"
+	"github.com/robin-jiangdh/magpie/internal/testenv"
 )
 
 // The Restart button runs `codex app-server daemon restart` with the codex

@@ -7,7 +7,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/yetone/magpie/internal/appdir"
+	"github.com/robin-jiangdh/magpie/internal/appdir"
 )
 
 // omp (oh-my-pi, a fork of Pi) keeps its sessions as Pi does, a file per

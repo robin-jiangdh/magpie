@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/yetone/magpie/internal/gateway"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/gateway"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // Pi asks each model on the API its provider serves it on, so the gateway

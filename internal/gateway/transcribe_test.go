@@ -12,9 +12,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/provider"
-	"github.com/yetone/magpie/internal/settings"
-	"github.com/yetone/magpie/internal/usage"
+	"github.com/robin-jiangdh/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/usage"
 )
 
 // scribe is a vendor with OpenAI's speech-to-text APIs; what each path was

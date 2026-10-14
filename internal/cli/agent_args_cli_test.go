@@ -10,8 +10,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/agent"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/agent"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // cliHome is groupsHome with every other folder an agent keeps files in

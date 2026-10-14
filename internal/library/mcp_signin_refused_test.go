@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/mcpauth"
-	"github.com/yetone/magpie/internal/mcpauth/mcpauthtest"
+	"github.com/robin-jiangdh/magpie/internal/mcpauth"
+	"github.com/robin-jiangdh/magpie/internal/mcpauth/mcpauthtest"
 )
 
 // Xichun123 (#1619): Figma's remote MCP server (mcp.figma.com/mcp) admits

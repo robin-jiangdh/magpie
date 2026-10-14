@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/catalog"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // #1370 (maicent): the Usage page counted a Kimi Code membership's k3 at

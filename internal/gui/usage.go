@@ -13,12 +13,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yetone/magpie/internal/agent"
-	"github.com/yetone/magpie/internal/edit"
-	"github.com/yetone/magpie/internal/provider"
-	"github.com/yetone/magpie/internal/sessions"
-	"github.com/yetone/magpie/internal/usage"
-	"github.com/yetone/magpie/internal/usageapi"
+	"github.com/robin-jiangdh/magpie/internal/agent"
+	"github.com/robin-jiangdh/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/sessions"
+	"github.com/robin-jiangdh/magpie/internal/usage"
+	"github.com/robin-jiangdh/magpie/internal/usageapi"
 )
 
 // The Usage page's JSON is built in usageapi, which the gateway's

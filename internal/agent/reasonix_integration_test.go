@@ -13,9 +13,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/gateway"
-	"github.com/yetone/magpie/internal/proc"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/gateway"
+	"github.com/robin-jiangdh/magpie/internal/proc"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // An opt-in contract check against the released client. Everything it reads and

@@ -17,14 +17,14 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 
-	"github.com/yetone/magpie/internal/agent"
-	"github.com/yetone/magpie/internal/catalog"
-	"github.com/yetone/magpie/internal/library"
-	"github.com/yetone/magpie/internal/profile"
-	"github.com/yetone/magpie/internal/provider"
-	"github.com/yetone/magpie/internal/sessions"
-	"github.com/yetone/magpie/internal/settings"
-	"github.com/yetone/magpie/internal/usage"
+	"github.com/robin-jiangdh/magpie/internal/agent"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/library"
+	"github.com/robin-jiangdh/magpie/internal/profile"
+	"github.com/robin-jiangdh/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/sessions"
+	"github.com/robin-jiangdh/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/usage"
 )
 
 // ---- styling ---------------------------------------------------------------

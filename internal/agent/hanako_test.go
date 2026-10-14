@@ -18,8 +18,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/yetone/magpie/internal/catalog"
-	"github.com/yetone/magpie/internal/gateway"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/gateway"
 	"gopkg.in/yaml.v3"
 )
 

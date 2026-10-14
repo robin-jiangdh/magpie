@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/gateway"
+	"github.com/robin-jiangdh/magpie/internal/gateway"
 )
 
 // sameGroup compares two values of a field, one of them read back from the

@@ -22,7 +22,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/yetone/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
 )
 
 // cursorEfforts are the effort words of Cursor's ids, the levels magpie

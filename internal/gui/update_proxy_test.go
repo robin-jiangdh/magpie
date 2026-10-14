@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/settings"
-	"github.com/yetone/magpie/internal/update"
+	"github.com/robin-jiangdh/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/update"
 )
 
 // An update check that failed going direct is tried again as soon as a

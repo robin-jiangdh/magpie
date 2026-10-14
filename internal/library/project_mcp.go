@@ -13,7 +13,7 @@ import (
 	toml "github.com/pelletier/go-toml/v2"
 	"github.com/tidwall/jsonc"
 
-	"github.com/yetone/magpie/internal/gateway"
+	"github.com/robin-jiangdh/magpie/internal/gateway"
 )
 
 // projectMCPFiles is the file, in a project, each agent reads the project's

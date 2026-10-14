@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
 )
 
 // #1818: a provider kept only to watch its balance, saved with Select

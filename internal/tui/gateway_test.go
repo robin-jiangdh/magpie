@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/gateway"
+	"github.com/robin-jiangdh/magpie/internal/gateway"
 )
 
 func freeAddr(t *testing.T) string {

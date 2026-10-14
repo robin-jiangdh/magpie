@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/plugin"
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/plugin"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 // use makes plugins.json list entries, and the middleware load afresh.

@@ -14,9 +14,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/catalog"
-	"github.com/yetone/magpie/internal/settings"
-	"github.com/yetone/magpie/internal/testenv"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/testenv"
 )
 
 // prefsHome is a sandbox home where two providers serve the same model,

@@ -5,9 +5,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/access"
-	"github.com/yetone/magpie/internal/edit"
-	"github.com/yetone/magpie/internal/gateway"
+	"github.com/robin-jiangdh/magpie/internal/access"
+	"github.com/robin-jiangdh/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/gateway"
 )
 
 // Codex in a WSL distro under NAT connected while the gateway wasn't shared

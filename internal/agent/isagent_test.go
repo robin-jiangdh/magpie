@@ -3,7 +3,7 @@ package agent
 import (
 	"testing"
 
-	"github.com/yetone/magpie/internal/usage"
+	"github.com/robin-jiangdh/magpie/internal/usage"
 )
 
 // The gateway takes a client that is no agent magpie knows, with the plain

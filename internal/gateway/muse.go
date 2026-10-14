@@ -4,7 +4,7 @@ import (
 	"cmp"
 	"net/http"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // museContext and museOutput are what Muse is told of a model whose window

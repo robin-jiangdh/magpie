@@ -8,9 +8,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/access"
-	"github.com/yetone/magpie/internal/provider"
-	"github.com/yetone/magpie/internal/usageapi"
+	"github.com/robin-jiangdh/magpie/internal/access"
+	"github.com/robin-jiangdh/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/usageapi"
 )
 
 // The Usage page's numbers are read over the gateway too (HoGee_xxl on

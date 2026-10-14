@@ -24,7 +24,7 @@ func TestParseChatReadsEveryReasoningSpelling(t *testing.T) {
 				{"role":"user","content":"Read go.mod and bump the go directive."},
 				{"role":"assistant","reasoning_content":"go.mod has to be read before it is changed.",
 				 "tool_calls":[{"id":"call_1","type":"function","function":{"name":"read_file","arguments":"{\"path\":\"go.mod\"}"}}]},
-				{"role":"tool","tool_call_id":"call_1","content":"module github.com/yetone/magpie\n\ngo 1.24\n"}]}`,
+				{"role":"tool","tool_call_id":"call_1","content":"module github.com/robin-jiangdh/magpie\n\ngo 1.24\n"}]}`,
 			want: "go.mod has to be read before it is changed.",
 		},
 		{
@@ -33,7 +33,7 @@ func TestParseChatReadsEveryReasoningSpelling(t *testing.T) {
 				{"role":"user","content":"Read go.mod and bump the go directive."},
 				{"role":"assistant","reasoning":"The user wants the go directive at 1.25, so read go.mod first.",
 				 "tool_calls":[{"id":"call_2","type":"function","function":{"name":"read_file","arguments":"{\"path\":\"go.mod\"}"}}]},
-				{"role":"tool","tool_call_id":"call_2","content":"module github.com/yetone/magpie\n\ngo 1.24\n"}]}`,
+				{"role":"tool","tool_call_id":"call_2","content":"module github.com/robin-jiangdh/magpie\n\ngo 1.24\n"}]}`,
 			want: "The user wants the go directive at 1.25, so read go.mod first.",
 		},
 		{
@@ -43,7 +43,7 @@ func TestParseChatReadsEveryReasoningSpelling(t *testing.T) {
 				{"role":"assistant","reasoning_details":[
 					{"type":"reasoning.text","text":"A read comes before an edit.","signature":null,"format":"unknown","index":0}],
 				 "tool_calls":[{"id":"call_3","type":"function","function":{"name":"read_file","arguments":"{\"path\":\"go.mod\"}"}}]},
-				{"role":"tool","tool_call_id":"call_3","content":"module github.com/yetone/magpie\n\ngo 1.24\n"}]}`,
+				{"role":"tool","tool_call_id":"call_3","content":"module github.com/robin-jiangdh/magpie\n\ngo 1.24\n"}]}`,
 			want: "A read comes before an edit.",
 		},
 	} {

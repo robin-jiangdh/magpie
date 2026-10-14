@@ -46,7 +46,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yetone/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/edit"
 )
 
 // clineSlot is the provider magpie takes in Cline.

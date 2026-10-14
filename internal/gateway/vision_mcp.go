@@ -12,9 +12,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/yetone/magpie/internal/access"
-	"github.com/yetone/magpie/internal/budget"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/access"
+	"github.com/robin-jiangdh/magpie/internal/budget"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // magpie's image recognition, the model that describes images to a model

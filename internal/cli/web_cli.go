@@ -7,10 +7,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/yetone/magpie/internal/daemon"
-	"github.com/yetone/magpie/internal/gateway"
-	"github.com/yetone/magpie/internal/gui"
-	"github.com/yetone/magpie/internal/stats"
+	"github.com/robin-jiangdh/magpie/internal/daemon"
+	"github.com/robin-jiangdh/magpie/internal/gateway"
+	"github.com/robin-jiangdh/magpie/internal/gui"
+	"github.com/robin-jiangdh/magpie/internal/stats"
 )
 
 // webAddr is where `magpie web` listens unless told: beside the gateway.

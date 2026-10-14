@@ -11,7 +11,7 @@ import (
 	"golang.org/x/sys/windows"
 	"golang.org/x/sys/windows/registry"
 
-	"github.com/yetone/magpie/internal/appdir"
+	"github.com/robin-jiangdh/magpie/internal/appdir"
 )
 
 // appPath is where Win+R and `start magpie` look magpie.exe up: the user's

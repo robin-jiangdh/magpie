@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
 )
 
 // Which APIs a vendor or relay serves behind the one URL the user typed is

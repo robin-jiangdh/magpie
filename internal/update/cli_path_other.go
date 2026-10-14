@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"slices"
 
-	"github.com/yetone/magpie/internal/proc"
+	"github.com/robin-jiangdh/magpie/internal/proc"
 )
 
 // installedShells are the shells installed here that a terminal may open:

@@ -5,10 +5,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/catalog"
-	"github.com/yetone/magpie/internal/filememo"
-	"github.com/yetone/magpie/internal/plugin"
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/filememo"
+	"github.com/robin-jiangdh/magpie/internal/plugin"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 // The catalog is rebuilt from every provider's files on each Resolve (tens

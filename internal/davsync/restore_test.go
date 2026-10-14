@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/backup"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/backup"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // Sync can be set to run by itself less often, or never — only when asked

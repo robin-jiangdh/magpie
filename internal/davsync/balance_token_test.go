@@ -6,8 +6,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/yetone/magpie/internal/backup"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/backup"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // A computer sending no keys leaves the server's balance token in place,

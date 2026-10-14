@@ -17,7 +17,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/yetone/magpie/internal/proc"
+	"github.com/robin-jiangdh/magpie/internal/proc"
 )
 
 // Carry is another agent a session can be carried on in, and the shell

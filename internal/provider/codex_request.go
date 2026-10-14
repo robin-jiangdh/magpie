@@ -15,9 +15,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/catalog"
-	"github.com/yetone/magpie/internal/codexcat"
-	"github.com/yetone/magpie/internal/proc"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/codexcat"
+	"github.com/robin-jiangdh/magpie/internal/proc"
 )
 
 // A ChatGPT account's requests are made the way Codex CLI makes them, as

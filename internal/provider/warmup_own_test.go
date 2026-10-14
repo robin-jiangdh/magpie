@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 // #957 (Evan26Ma): two Plus accounts started at one daily time run out

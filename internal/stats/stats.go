@@ -22,9 +22,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yetone/magpie/internal/provider"
-	"github.com/yetone/magpie/internal/settings"
-	"github.com/yetone/magpie/internal/update"
+	"github.com/robin-jiangdh/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/update"
 )
 
 // Key is the Magpie project's key on PostHog: it can send events there and

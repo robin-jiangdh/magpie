@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/access"
-	"github.com/yetone/magpie/internal/budget"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/access"
+	"github.com/robin-jiangdh/magpie/internal/budget"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // #1547 (PennyVibe), between two magpies: a computer with another magpie

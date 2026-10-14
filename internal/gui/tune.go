@@ -12,9 +12,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/yetone/magpie/internal/agent"
-	"github.com/yetone/magpie/internal/sessions"
-	"github.com/yetone/magpie/internal/tune"
+	"github.com/robin-jiangdh/magpie/internal/agent"
+	"github.com/robin-jiangdh/magpie/internal/sessions"
+	"github.com/robin-jiangdh/magpie/internal/tune"
 )
 
 type tuneAdvice struct {

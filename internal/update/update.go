@@ -29,10 +29,10 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/yetone/magpie/internal/appdir"
-	"github.com/yetone/magpie/internal/netproxy"
-	"github.com/yetone/magpie/internal/proc"
-	"github.com/yetone/magpie/internal/source"
+	"github.com/robin-jiangdh/magpie/internal/appdir"
+	"github.com/robin-jiangdh/magpie/internal/netproxy"
+	"github.com/robin-jiangdh/magpie/internal/proc"
+	"github.com/robin-jiangdh/magpie/internal/source"
 )
 
 // Site is magpie's home; its /api/latest is the update feed.

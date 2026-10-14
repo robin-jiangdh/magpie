@@ -1,6 +1,6 @@
 package gui
 
-import "github.com/yetone/magpie/internal/settings"
+import "github.com/robin-jiangdh/magpie/internal/settings"
 
 // The main window opens as it was last left: at the size it was last given
 // (settings.Window) and maximised again if it was (settings.WindowMaximised).

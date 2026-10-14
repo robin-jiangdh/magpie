@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/testenv"
+	"github.com/robin-jiangdh/magpie/internal/testenv"
 )
 
 // A CLI is asked its version once per binary: one that fails to run (macOS

@@ -27,7 +27,7 @@ import (
 
 	toml "github.com/pelletier/go-toml/v2"
 
-	"github.com/yetone/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/edit"
 )
 
 // jcodeProfile is magpie's profile's table in jcode's config.toml, and

@@ -14,8 +14,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/davsync"
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/davsync"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 // Sync now, while another magpie syncs longer than the page waits: the

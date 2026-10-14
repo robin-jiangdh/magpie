@@ -29,8 +29,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yetone/magpie/internal/catalog"
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 // GroupPrefix starts a group's id in the catalog: "group/<id>".

@@ -6,7 +6,7 @@ import (
 	"slices"
 	"time"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // A group's patience (#1418): when every member has failed in a way that

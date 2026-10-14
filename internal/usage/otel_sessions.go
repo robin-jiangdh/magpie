@@ -5,9 +5,9 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/yetone/magpie/internal/redact"
-	"github.com/yetone/magpie/internal/sessions"
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/redact"
+	"github.com/robin-jiangdh/magpie/internal/sessions"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 type sessionAvailability struct {

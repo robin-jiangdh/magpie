@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/appdir"
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/appdir"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 // A partner pays to be listed, so how often it is seen and picked is

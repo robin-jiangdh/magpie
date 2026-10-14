@@ -3,8 +3,8 @@ package usage
 import (
 	"testing"
 
-	"github.com/yetone/magpie/internal/provider"
-	"github.com/yetone/magpie/internal/sessions"
+	"github.com/robin-jiangdh/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/sessions"
 )
 
 func TestSessionOfficialLoginRequiresMatchedAccount(t *testing.T) {

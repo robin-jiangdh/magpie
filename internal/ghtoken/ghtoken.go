@@ -20,7 +20,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 // Env names the environment variables a token is taken from when Settings

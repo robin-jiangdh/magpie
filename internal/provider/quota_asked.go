@@ -6,8 +6,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/yetone/magpie/internal/netproxy"
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/netproxy"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 // Allowances read only when asked (#1518, RooobinYe): with Settings →

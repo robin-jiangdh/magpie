@@ -13,7 +13,7 @@ import (
 	"testing"
 
 	"github.com/tidwall/gjson"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // zedUpstream stands in for cloud.zed.dev/completions: reply answers each

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/yetone/magpie/internal/autostart"
+	"github.com/robin-jiangdh/magpie/internal/autostart"
 )
 
 // magpie autostart [on|off]: whether magpie opens at login, in the tray.

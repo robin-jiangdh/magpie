@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/sessions"
+	"github.com/robin-jiangdh/magpie/internal/sessions"
 )
 
 // sessions/purge erases trashed sessions for good, the keys named or every

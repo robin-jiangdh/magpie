@@ -12,8 +12,8 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"github.com/yetone/magpie/internal/appdir"
-	"github.com/yetone/magpie/internal/filelock"
+	"github.com/robin-jiangdh/magpie/internal/appdir"
+	"github.com/robin-jiangdh/magpie/internal/filelock"
 )
 
 // plugins.yml says which built-in plugins are on, and each one's config:

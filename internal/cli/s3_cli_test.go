@@ -11,8 +11,8 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/yetone/magpie/internal/davsync"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/davsync"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // s3Server is an S3 server with buckets of any name, path-style, keeping

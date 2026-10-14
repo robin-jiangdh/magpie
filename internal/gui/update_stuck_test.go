@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/yetone/magpie/internal/update"
+	"github.com/robin-jiangdh/magpie/internal/update"
 )
 
 // #1277: a magpie.exe kept at C:\ may not write there, so it can't replace

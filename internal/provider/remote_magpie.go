@@ -4,7 +4,7 @@ import (
 	"maps"
 	"strings"
 
-	"github.com/yetone/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
 )
 
 // A remote magpie is another computer's magpie gateway, shared on its

@@ -13,7 +13,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // devinFrame is one frame of a Connect stream, gzipped when zip.

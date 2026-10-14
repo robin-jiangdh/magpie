@@ -10,7 +10,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/yetone/magpie/internal/agentenv"
+	"github.com/robin-jiangdh/magpie/internal/agentenv"
 )
 
 // isolateFetchHome keeps a fetch's fixtures out of the user's own magpie

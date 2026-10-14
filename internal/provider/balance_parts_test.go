@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/agentenv"
+	"github.com/robin-jiangdh/magpie/internal/agentenv"
 )
 
 // A balance field with several amounts, or a percent, comes to the card

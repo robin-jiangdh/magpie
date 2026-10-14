@@ -6,8 +6,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/yetone/magpie/internal/filelock"
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/filelock"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 // ErrBusy is a wait for another magpie's sync that ran out of time.

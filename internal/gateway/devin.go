@@ -30,7 +30,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // devinAuth and devinVariant are the sign-in and the model the API is

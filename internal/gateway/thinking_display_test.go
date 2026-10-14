@@ -10,7 +10,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // displayVendor answers as Claude Opus 4.7 and later, Sonnet 5, Haiku 5.5,

@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/yetone/magpie/internal/agent"
+	"github.com/robin-jiangdh/magpie/internal/agent"
 )
 
 // Group is what a profile holds for one agent, to be read before it is

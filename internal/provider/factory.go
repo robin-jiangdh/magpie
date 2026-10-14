@@ -40,7 +40,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
 )
 
 // Where Factory and its WorkOS sign-in are; vars so tests can point them

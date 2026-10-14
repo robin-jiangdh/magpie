@@ -44,8 +44,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/plugin"
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/plugin"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 const (

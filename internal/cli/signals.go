@@ -8,7 +8,7 @@ import (
 	"sync/atomic"
 	"syscall"
 
-	"github.com/yetone/magpie/internal/proc"
+	"github.com/robin-jiangdh/magpie/internal/proc"
 )
 
 // endProbesOnSignal: the probes magpie asks a CLI with lead a session of

@@ -16,9 +16,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/appdir"
-	"github.com/yetone/magpie/internal/ghtoken"
-	"github.com/yetone/magpie/internal/source"
+	"github.com/robin-jiangdh/magpie/internal/appdir"
+	"github.com/robin-jiangdh/magpie/internal/ghtoken"
+	"github.com/robin-jiangdh/magpie/internal/source"
 )
 
 // The plugin market: the plugins magpie suggests, from the community

@@ -17,7 +17,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // wbStudio is WorkBuddy's API as far as drawing goes: its product config,

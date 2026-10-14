@@ -24,8 +24,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/appdir"
-	"github.com/yetone/magpie/internal/proc"
+	"github.com/robin-jiangdh/magpie/internal/appdir"
+	"github.com/robin-jiangdh/magpie/internal/proc"
 )
 
 // Detect reports whether magpie runs on Omarchy. MAGPIE_OMARCHY=1 says it

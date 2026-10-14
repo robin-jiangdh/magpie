@@ -15,7 +15,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/yetone/magpie/internal/mcpauth"
+	"github.com/robin-jiangdh/magpie/internal/mcpauth"
 )
 
 // GitHub's remote MCP server (新v学员 on Discord): its sign-in is GitHub's

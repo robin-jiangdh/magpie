@@ -16,8 +16,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/yetone/magpie/internal/filememo"
-	"github.com/yetone/magpie/internal/steady"
+	"github.com/robin-jiangdh/magpie/internal/filememo"
+	"github.com/robin-jiangdh/magpie/internal/steady"
 )
 
 // Read returns the file contents, or (nil, nil) when the file does not exist.

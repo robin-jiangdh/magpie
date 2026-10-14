@@ -19,16 +19,16 @@ import (
 	"github.com/wailsapp/wails/v3/pkg/application"
 	"github.com/wailsapp/wails/v3/pkg/events"
 
-	"github.com/yetone/magpie/internal/agent"
-	"github.com/yetone/magpie/internal/appdir"
-	"github.com/yetone/magpie/internal/autostart"
-	"github.com/yetone/magpie/internal/library"
-	"github.com/yetone/magpie/internal/omarchy"
-	"github.com/yetone/magpie/internal/proc"
-	"github.com/yetone/magpie/internal/settings"
-	"github.com/yetone/magpie/internal/shortcut"
-	"github.com/yetone/magpie/internal/stats"
-	"github.com/yetone/magpie/internal/update"
+	"github.com/robin-jiangdh/magpie/internal/agent"
+	"github.com/robin-jiangdh/magpie/internal/appdir"
+	"github.com/robin-jiangdh/magpie/internal/autostart"
+	"github.com/robin-jiangdh/magpie/internal/library"
+	"github.com/robin-jiangdh/magpie/internal/omarchy"
+	"github.com/robin-jiangdh/magpie/internal/proc"
+	"github.com/robin-jiangdh/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/shortcut"
+	"github.com/robin-jiangdh/magpie/internal/stats"
+	"github.com/robin-jiangdh/magpie/internal/update"
 )
 
 //go:embed tray.png

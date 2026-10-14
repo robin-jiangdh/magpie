@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/testenv"
-	"github.com/yetone/magpie/internal/update"
+	"github.com/robin-jiangdh/magpie/internal/testenv"
+	"github.com/robin-jiangdh/magpie/internal/update"
 )
 
 // moveAndBack does what Move and MoveBack do with a mover's accounts, but

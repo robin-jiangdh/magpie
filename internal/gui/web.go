@@ -19,8 +19,8 @@ import (
 
 	"github.com/klauspost/compress/gzhttp"
 
-	"github.com/yetone/magpie/internal/gateway"
-	"github.com/yetone/magpie/internal/update"
+	"github.com/robin-jiangdh/magpie/internal/gateway"
+	"github.com/robin-jiangdh/magpie/internal/update"
 )
 
 // `magpie web` serves the window's page to a browser, for a computer that

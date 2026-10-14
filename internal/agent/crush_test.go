@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/edit"
 )
 
 // crushHome is effortHome with Crush's data folder in the sandbox too, and

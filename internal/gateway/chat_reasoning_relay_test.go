@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // #473: dsh (pi-ai, Chat Completions) on WorkBuddy AI's deepseek-v4.1-flash

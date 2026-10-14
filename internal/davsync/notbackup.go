@@ -17,7 +17,7 @@ import (
 	"unicode/utf8"
 
 	"github.com/klauspost/compress/zstd"
-	"github.com/yetone/magpie/internal/backup"
+	"github.com/robin-jiangdh/magpie/internal/backup"
 )
 
 // ServerFile is what the server held, or answered with, where the backup

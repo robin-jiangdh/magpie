@@ -22,11 +22,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/catalog"
-	"github.com/yetone/magpie/internal/ghtoken"
-	"github.com/yetone/magpie/internal/libc"
-	"github.com/yetone/magpie/internal/netproxy"
-	"github.com/yetone/magpie/internal/source"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/ghtoken"
+	"github.com/robin-jiangdh/magpie/internal/libc"
+	"github.com/robin-jiangdh/magpie/internal/netproxy"
+	"github.com/robin-jiangdh/magpie/internal/source"
 )
 
 // BunVersion is the Bun magpie downloads to run plugins with the first

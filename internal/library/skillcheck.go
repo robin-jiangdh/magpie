@@ -19,8 +19,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/yetone/magpie/internal/ghtoken"
-	"github.com/yetone/magpie/internal/source"
+	"github.com/robin-jiangdh/magpie/internal/ghtoken"
+	"github.com/robin-jiangdh/magpie/internal/source"
 )
 
 // ---- which skills GitHub has changed --------------------------------------

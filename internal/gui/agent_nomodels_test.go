@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/agent"
+	"github.com/robin-jiangdh/magpie/internal/agent"
 )
 
 // Tystem on Discord: connecting Codex with no provider or subscription in

@@ -10,7 +10,7 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"github.com/yetone/magpie/internal/agentenv"
+	"github.com/robin-jiangdh/magpie/internal/agentenv"
 )
 
 func keepSecretsHome(t *testing.T) {

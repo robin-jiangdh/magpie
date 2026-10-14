@@ -16,7 +16,7 @@ import (
 	"slices"
 	"time"
 
-	"github.com/yetone/magpie/internal/plugin"
+	"github.com/robin-jiangdh/magpie/internal/plugin"
 )
 
 // relistEvery is how often the gateway's magpie lists the plugins'

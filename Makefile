@@ -3,7 +3,7 @@
 # another one (make -f path/to/Makefile) they would act there. make -C
 # works. go.mod is read relative to the working folder, so a path with
 # spaces (or a symlinked Makefile) changes nothing.
-ifneq ($(shell sed -n 's/^module //p' go.mod 2>/dev/null),github.com/yetone/magpie)
+ifneq ($(shell sed -n 's/^module //p' go.mod 2>/dev/null),github.com/robin-jiangdh/magpie)
   $(error run make in magpie's folder (make -C path/to/magpie), not in $(CURDIR))
 endif
 

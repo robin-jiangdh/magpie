@@ -8,7 +8,7 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"github.com/yetone/magpie/internal/agentenv"
+	"github.com/robin-jiangdh/magpie/internal/agentenv"
 )
 
 // A Command Code key's plan and balance, read once, still show when

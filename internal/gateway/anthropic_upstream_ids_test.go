@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // A Codex conversation that had another vendor's tool call, its call_id

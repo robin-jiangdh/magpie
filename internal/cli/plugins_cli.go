@@ -10,10 +10,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yetone/magpie/internal/middleware"
-	"github.com/yetone/magpie/internal/plugin"
-	"github.com/yetone/magpie/internal/pluginrt"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/middleware"
+	"github.com/robin-jiangdh/magpie/internal/plugin"
+	"github.com/robin-jiangdh/magpie/internal/pluginrt"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 	"golang.org/x/term"
 )
 

@@ -25,9 +25,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/yetone/magpie/internal/appdir"
-	"github.com/yetone/magpie/internal/libc"
-	"github.com/yetone/magpie/internal/proc"
+	"github.com/robin-jiangdh/magpie/internal/appdir"
+	"github.com/robin-jiangdh/magpie/internal/libc"
+	"github.com/robin-jiangdh/magpie/internal/proc"
 )
 
 // Base is where Anthropic publishes Claude Code's builds, as its installer

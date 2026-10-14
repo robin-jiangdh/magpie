@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/yetone/magpie/internal/update"
+	"github.com/robin-jiangdh/magpie/internal/update"
 )
 
 // The terminal build on a Mac (magpie-cli-darwin, which `magpie web` runs

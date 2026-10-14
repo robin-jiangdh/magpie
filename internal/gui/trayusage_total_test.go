@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/usage"
+	"github.com/robin-jiangdh/magpie/internal/usage"
 )
 
 // #1984: the menu bar shows magpie's own total for today or the last 7

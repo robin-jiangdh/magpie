@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // Claude Code signed in to a, with b on beside it; then signed in to b

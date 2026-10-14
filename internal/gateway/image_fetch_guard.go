@@ -13,7 +13,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/yetone/magpie/internal/netproxy"
+	"github.com/robin-jiangdh/magpie/internal/netproxy"
 )
 
 // An image a caller names by URL (an edit's, or one to draw from) is

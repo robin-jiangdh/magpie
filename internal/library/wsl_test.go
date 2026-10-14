@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/agent"
+	"github.com/robin-jiangdh/magpie/internal/agent"
 )
 
 // wslSandbox is sandbox with a running WSL distro, Ubuntu-24.04, whose /

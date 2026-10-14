@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/yetone/magpie/internal/netproxy"
+	"github.com/robin-jiangdh/magpie/internal/netproxy"
 )
 
 // upstreamTLS is what the gateway's transports dial TLS with: nil, the

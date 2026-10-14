@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/yetone/magpie/internal/agent"
-	"github.com/yetone/magpie/internal/gateway"
+	"github.com/robin-jiangdh/magpie/internal/agent"
+	"github.com/robin-jiangdh/magpie/internal/gateway"
 )
 
 // turnDoneText is the notification that an agent's turn is done (itieniu

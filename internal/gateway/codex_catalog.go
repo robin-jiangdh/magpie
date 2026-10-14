@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/yetone/magpie/internal/codexcat"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/codexcat"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // CodexCatalogPath is Codex's model list in its own shape, for a Codex that

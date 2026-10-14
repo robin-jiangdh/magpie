@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/plugin"
-	"github.com/yetone/magpie/internal/testenv"
-	"github.com/yetone/magpie/internal/zed"
+	"github.com/robin-jiangdh/magpie/internal/plugin"
+	"github.com/robin-jiangdh/magpie/internal/testenv"
+	"github.com/robin-jiangdh/magpie/internal/zed"
 )
 
 // fakePlugin readies the test plugin's host for a move of fakeco, with

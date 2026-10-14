@@ -18,8 +18,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/plugin"
-	"github.com/yetone/magpie/internal/testenv"
+	"github.com/robin-jiangdh/magpie/internal/plugin"
+	"github.com/robin-jiangdh/magpie/internal/testenv"
 )
 
 // magpie in Docker (xugui on Discord: "docker版登不上grok和command code"):

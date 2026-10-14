@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // codexUsedUpReal is codexUsedUp as the sync runs it: TestMain stands in for

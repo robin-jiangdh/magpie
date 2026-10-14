@@ -10,9 +10,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yetone/magpie/internal/davsync"
-	"github.com/yetone/magpie/internal/gateway"
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/davsync"
+	"github.com/robin-jiangdh/magpie/internal/gateway"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 // WebDAV, S3 and GitHub sync from the terminal: what Settings › Sync does, through

@@ -12,8 +12,8 @@ import (
 	"testing"
 
 	"github.com/tidwall/gjson"
-	"github.com/yetone/magpie/internal/provider"
-	"github.com/yetone/magpie/internal/qoder"
+	"github.com/robin-jiangdh/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/qoder"
 )
 
 func testQoderModel(t *testing.T) qoder.ModelInfo {

@@ -29,7 +29,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/yetone/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/edit"
 )
 
 func hermes(home string) *Agent { return hermesIn(here(home)) }

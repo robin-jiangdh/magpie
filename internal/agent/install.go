@@ -23,7 +23,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yetone/magpie/internal/proc"
+	"github.com/robin-jiangdh/magpie/internal/proc"
 )
 
 // InstallCmd is one way to install an agent's CLI.

@@ -9,9 +9,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yetone/magpie/internal/daemon"
-	"github.com/yetone/magpie/internal/gateway"
-	"github.com/yetone/magpie/internal/gui"
+	"github.com/robin-jiangdh/magpie/internal/daemon"
+	"github.com/robin-jiangdh/magpie/internal/gateway"
+	"github.com/robin-jiangdh/magpie/internal/gui"
 )
 
 const daemonUsage = "usage: magpie daemon [install|uninstall|start|stop|restart|status] · magpie daemon install [--web] [--lan] [--addr host:port] [--no-web] · magpie daemon web [on|off] [--lan] [--addr host:port]"

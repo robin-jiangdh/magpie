@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/sessions"
+	"github.com/robin-jiangdh/magpie/internal/sessions"
 )
 
 // The Sessions page reads the sessions of Claude Code in a WSL distro magpie

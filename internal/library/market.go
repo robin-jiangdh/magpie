@@ -21,8 +21,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/appdir"
-	"github.com/yetone/magpie/internal/iconproxy"
+	"github.com/robin-jiangdh/magpie/internal/appdir"
+	"github.com/robin-jiangdh/magpie/internal/iconproxy"
 )
 
 // The market is where the page finds MCP servers and skills to add in one

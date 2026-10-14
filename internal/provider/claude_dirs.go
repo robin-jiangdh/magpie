@@ -21,8 +21,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/proc"
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/proc"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 	"golang.org/x/text/unicode/norm"
 )
 

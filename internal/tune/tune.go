@@ -20,7 +20,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yetone/magpie/internal/sessions"
+	"github.com/robin-jiangdh/magpie/internal/sessions"
 )
 
 // Call is one model call of an agent's conversation, as tune replays it.

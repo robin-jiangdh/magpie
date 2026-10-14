@@ -11,7 +11,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/steady"
+	"github.com/robin-jiangdh/magpie/internal/steady"
 )
 
 type entry struct {

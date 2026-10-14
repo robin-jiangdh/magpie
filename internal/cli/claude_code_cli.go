@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yetone/magpie/internal/claudecode"
-	"github.com/yetone/magpie/internal/proc"
+	"github.com/robin-jiangdh/magpie/internal/claudecode"
+	"github.com/robin-jiangdh/magpie/internal/proc"
 )
 
 const claudeCodeUsage = "usage: magpie claude-code                  which Claude Code the Claude subscription runs\n" +

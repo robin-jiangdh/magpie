@@ -20,7 +20,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/yetone/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/edit"
 )
 
 // morphUA is the User-Agent magpie has morph send, in llm.headers: its

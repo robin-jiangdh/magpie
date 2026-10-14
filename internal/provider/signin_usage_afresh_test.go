@@ -12,7 +12,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/qoder"
+	"github.com/robin-jiangdh/magpie/internal/qoder"
 )
 
 // An account signed in again is read afresh: the usage reading kept from

@@ -12,8 +12,8 @@ import (
 	"time"
 
 	"github.com/tidwall/gjson"
-	"github.com/yetone/magpie/internal/provider"
-	"github.com/yetone/magpie/internal/qoder"
+	"github.com/robin-jiangdh/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/qoder"
 )
 
 // plugins #98: Qoder's queue refusing a chat (code 10605) is Qoder being

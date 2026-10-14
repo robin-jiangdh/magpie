@@ -18,7 +18,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/iconproxy"
+	"github.com/robin-jiangdh/magpie/internal/iconproxy"
 )
 
 // A provider's own picture lives in the icons folder beside providers.json,

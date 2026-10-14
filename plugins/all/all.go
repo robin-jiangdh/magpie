@@ -3,10 +3,10 @@
 package all
 
 import (
-	_ "github.com/yetone/magpie/plugins/gateway"
-	_ "github.com/yetone/magpie/plugins/groups"
-	_ "github.com/yetone/magpie/plugins/library"
-	_ "github.com/yetone/magpie/plugins/otel"
-	_ "github.com/yetone/magpie/plugins/sessions"
-	_ "github.com/yetone/magpie/plugins/warmups"
+	_ "github.com/robin-jiangdh/magpie/plugins/gateway"
+	_ "github.com/robin-jiangdh/magpie/plugins/groups"
+	_ "github.com/robin-jiangdh/magpie/plugins/library"
+	_ "github.com/robin-jiangdh/magpie/plugins/otel"
+	_ "github.com/robin-jiangdh/magpie/plugins/sessions"
+	_ "github.com/robin-jiangdh/magpie/plugins/warmups"
 )

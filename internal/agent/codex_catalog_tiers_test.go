@@ -6,8 +6,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/yetone/magpie/internal/codexcat"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/codexcat"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // The Codex CLI that names magpie its provider reads its models from

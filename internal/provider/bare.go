@@ -3,7 +3,7 @@ package provider
 import (
 	"strings"
 
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 // Model ids without the provider (settings.BareModelIDs; love1sbug on X):

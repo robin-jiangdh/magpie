@@ -48,8 +48,8 @@ import (
 	"runtime"
 
 	"github.com/tidwall/gjson"
-	"github.com/yetone/magpie/internal/appdir"
-	"github.com/yetone/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/appdir"
+	"github.com/robin-jiangdh/magpie/internal/edit"
 )
 
 // copilotJBID is the agent's id, and what its token names.

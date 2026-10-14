@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/yetone/magpie/internal/davsync"
+	"github.com/robin-jiangdh/magpie/internal/davsync"
 )
 
 // The Settings page re-reads the WebDAV view when it is redrawn (the CLI

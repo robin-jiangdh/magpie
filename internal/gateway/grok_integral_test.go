@@ -14,7 +14,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // codexShellTools are Codex's exec_command and write_stdin as it offers

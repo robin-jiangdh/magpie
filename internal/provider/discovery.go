@@ -21,7 +21,7 @@ import (
 	"errors"
 	"os"
 
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 var errAccountDiscoveryOff = errors.New("subscription accounts are off in magpie (Settings → Privacy, or `magpie accounts discovery on`)")

@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/plugin"
+	"github.com/robin-jiangdh/magpie/internal/plugin"
 )
 
 // A reset shared by unrelated vendors is not evidence of a shared account.

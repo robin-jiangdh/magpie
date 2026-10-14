@@ -26,7 +26,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // RouterAgent is the User-Agent magpie's own classifier calls carry.

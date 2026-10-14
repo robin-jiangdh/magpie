@@ -7,7 +7,7 @@ import (
 	"context"
 	"slices"
 
-	"github.com/yetone/magpie/internal/plugin"
+	"github.com/robin-jiangdh/magpie/internal/plugin"
 )
 
 // handOver is HandOver: a var so a test can see it asked.

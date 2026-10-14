@@ -15,7 +15,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 func claudeWarmPath() string { return filepath.Join(filepath.Dir(Path()), "claude-warmup.json") }

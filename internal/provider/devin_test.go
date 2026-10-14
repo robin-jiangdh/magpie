@@ -2,8 +2,8 @@ package provider
 
 import (
 	"encoding/json"
-	"github.com/yetone/magpie/internal/catalog"
-	"github.com/yetone/magpie/internal/testenv"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/testenv"
 	"net/http"
 	"net/http/httptest"
 	"net/url"

@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/yetone/magpie/internal/lastgood"
+	"github.com/robin-jiangdh/magpie/internal/lastgood"
 )
 
 // A settings.json a crash left at its length, every byte zero (#1505), is

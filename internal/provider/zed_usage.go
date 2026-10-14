@@ -18,7 +18,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/yetone/magpie/internal/zed"
+	"github.com/robin-jiangdh/magpie/internal/zed"
 )
 
 func zedLoginQuota(ctx context.Context, l Login) SubscriptionQuota {

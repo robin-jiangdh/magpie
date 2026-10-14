@@ -6,8 +6,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/yetone/magpie/internal/agent"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/agent"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // An agent on a routing group whose ref carries Claude Code's [1m] mark is

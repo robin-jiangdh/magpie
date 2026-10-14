@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/yetone/magpie/internal/steady"
+	"github.com/robin-jiangdh/magpie/internal/steady"
 )
 
 // WriteAtomic (settings, profiles, caller keys, agents' configs) flushes

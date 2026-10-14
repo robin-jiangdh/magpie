@@ -11,7 +11,7 @@ import (
 	"testing"
 
 	"github.com/tidwall/gjson"
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // cmdUpstream stands in for api.commandcode.ai: /alpha/generate answers

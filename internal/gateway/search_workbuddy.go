@@ -13,7 +13,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // A WorkBuddy plan, the China build's or WorkBuddy AI's, searches the web

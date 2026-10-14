@@ -6,8 +6,8 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/yetone/magpie/internal/edit"
-	"github.com/yetone/magpie/internal/testenv"
+	"github.com/robin-jiangdh/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/testenv"
 )
 
 // #304: PI_CODING_AGENT_DIR moves Pi's agent folder (config.js,

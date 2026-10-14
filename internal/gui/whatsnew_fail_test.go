@@ -7,7 +7,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/yetone/magpie/internal/update"
+	"github.com/robin-jiangdh/magpie/internal/update"
 )
 
 // #661: the site failing to give the notes (a 503 while GitHub limits it,

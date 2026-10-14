@@ -3,7 +3,7 @@ package agent
 import (
 	"time"
 
-	"github.com/yetone/magpie/internal/proc"
+	"github.com/robin-jiangdh/magpie/internal/proc"
 )
 
 // Rescan forgets what was found of the agents on this machine a while ago,

@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/agent"
+	"github.com/robin-jiangdh/magpie/internal/agent"
 )
 
 // An agent in a WSL distro that keeps everything in its own folder —

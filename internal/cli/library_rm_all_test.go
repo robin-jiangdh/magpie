@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/library"
+	"github.com/robin-jiangdh/magpie/internal/library"
 )
 
 // magpie library skill rm --all (#449): with nobody at a terminal to ask,

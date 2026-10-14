@@ -21,9 +21,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/catalog"
-	"github.com/yetone/magpie/internal/qoder"
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/qoder"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 // qoderMu serializes checking, rotating and saving tokens, including sign-in

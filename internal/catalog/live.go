@@ -16,7 +16,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yetone/magpie/internal/filememo"
+	"github.com/robin-jiangdh/magpie/internal/filememo"
 )
 
 // A vendor's own /models endpoint is the truth about what it serves today;

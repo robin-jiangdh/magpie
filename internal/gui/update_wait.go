@@ -3,7 +3,7 @@ package gui
 import (
 	"time"
 
-	"github.com/yetone/magpie/internal/gateway"
+	"github.com/robin-jiangdh/magpie/internal/gateway"
 )
 
 // A restart to update ends the gateway this process serves, and with it

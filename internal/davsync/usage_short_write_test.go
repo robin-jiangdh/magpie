@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/usage"
+	"github.com/robin-jiangdh/magpie/internal/usage"
 )
 
 // shortUsageDAV keeps the first cut usage writes short (-1 cuts them all),

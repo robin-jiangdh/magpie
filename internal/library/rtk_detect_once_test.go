@@ -6,7 +6,7 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"github.com/yetone/magpie/internal/agent"
+	"github.com/robin-jiangdh/magpie/internal/agent"
 )
 
 // ReadRTK says which agents can be given rtk, and which of those have its

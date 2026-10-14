@@ -24,7 +24,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/yetone/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
 )
 
 // MemberEfforts are the levels a group's member may be fixed at, lowest

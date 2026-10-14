@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/claudecode"
-	"github.com/yetone/magpie/internal/testenv"
+	"github.com/robin-jiangdh/magpie/internal/claudecode"
+	"github.com/robin-jiangdh/magpie/internal/testenv"
 )
 
 // miseWrapped puts deluxe's (Discord, Omarchy Linux) ~/.local/bin/claude

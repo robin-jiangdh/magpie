@@ -12,8 +12,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/claudecode"
-	"github.com/yetone/magpie/internal/libc"
+	"github.com/robin-jiangdh/magpie/internal/claudecode"
+	"github.com/robin-jiangdh/magpie/internal/libc"
 )
 
 // claudeCodeOut runs `magpie claude-code args…` and gives what it printed.

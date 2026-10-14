@@ -23,7 +23,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/yetone/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/edit"
 )
 
 func codebuddy(home string) *Agent { return codebuddyIn(here(home)) }

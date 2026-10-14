@@ -11,7 +11,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/yetone/magpie/internal/proc"
+	"github.com/robin-jiangdh/magpie/internal/proc"
 )
 
 // The `magpie` command in a terminal (PAMI on Discord: a way in the app to

@@ -4,8 +4,8 @@
 package otel
 
 import (
-	"github.com/yetone/magpie/internal/pluginrt"
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/pluginrt"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 func init() {

@@ -15,7 +15,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/qoder"
+	"github.com/robin-jiangdh/magpie/internal/qoder"
 )
 
 type qoderTransport func(*http.Request) (*http.Response, error)

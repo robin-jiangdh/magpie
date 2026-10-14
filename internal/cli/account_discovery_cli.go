@@ -3,8 +3,8 @@ package cli
 import (
 	"fmt"
 
-	"github.com/yetone/magpie/internal/provider"
-	"github.com/yetone/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/settings"
 )
 
 // accountsDiscoveryCmd is `magpie accounts discovery [on|off]` (#1535):

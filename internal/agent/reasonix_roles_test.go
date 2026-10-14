@@ -1,7 +1,7 @@
 package agent
 
 import (
-	"github.com/yetone/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/edit"
 	"os"
 	"testing"
 )

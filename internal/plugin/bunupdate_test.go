@@ -18,7 +18,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/testenv"
+	"github.com/robin-jiangdh/magpie/internal/testenv"
 )
 
 // bunReleases serves Bun's releases as GitHub does: each version's zip for

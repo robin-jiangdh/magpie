@@ -4,7 +4,7 @@ import (
 	"sort"
 	"time"
 
-	"github.com/yetone/magpie/internal/sessions"
+	"github.com/robin-jiangdh/magpie/internal/sessions"
 )
 
 // Direct is a period's calls the agents made on their own, which the gateway

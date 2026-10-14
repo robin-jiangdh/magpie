@@ -10,9 +10,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yetone/magpie/internal/agent"
-	"github.com/yetone/magpie/internal/sessions"
-	stats "github.com/yetone/magpie/internal/usage"
+	"github.com/robin-jiangdh/magpie/internal/agent"
+	"github.com/robin-jiangdh/magpie/internal/sessions"
+	stats "github.com/robin-jiangdh/magpie/internal/usage"
 )
 
 const sessionsUsage = "usage: magpie sessions [--days N|today|all] [--model <model>] [--folder <folder>] [--limit N] [--json]"

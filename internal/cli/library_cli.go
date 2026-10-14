@@ -11,7 +11,7 @@ import (
 
 	"golang.org/x/term"
 
-	"github.com/yetone/magpie/internal/library"
+	"github.com/robin-jiangdh/magpie/internal/library"
 )
 
 const libraryUsage = `magpie library                     what the library gives each agent: instructions, MCP servers, skills

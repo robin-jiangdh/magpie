@@ -21,7 +21,7 @@ package agent
 import (
 	"path/filepath"
 
-	"github.com/yetone/magpie/internal/appdir"
+	"github.com/robin-jiangdh/magpie/internal/appdir"
 )
 
 func primeAgent(home string) *Agent { return primeAgentIn(here(home)) }

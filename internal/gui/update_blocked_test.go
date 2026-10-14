@@ -12,8 +12,8 @@ import (
 	"syscall"
 	"testing"
 
-	"github.com/yetone/magpie/internal/settings"
-	"github.com/yetone/magpie/internal/update"
+	"github.com/robin-jiangdh/magpie/internal/settings"
+	"github.com/robin-jiangdh/magpie/internal/update"
 )
 
 // #894: on Windows with Smart App Control on, the new unsigned exe was

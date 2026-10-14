@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // A provider's MaxConcurrency (Discord, Lemon: a Codex account is

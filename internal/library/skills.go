@@ -21,7 +21,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/source"
+	"github.com/robin-jiangdh/magpie/internal/source"
 	"gopkg.in/yaml.v3"
 )
 

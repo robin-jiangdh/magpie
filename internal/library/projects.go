@@ -10,7 +10,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/yetone/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/edit"
 )
 
 // Project is a folder of the user's whose agents get some of the library's

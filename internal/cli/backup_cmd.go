@@ -11,8 +11,8 @@ import (
 
 	"golang.org/x/term"
 
-	"github.com/yetone/magpie/internal/backup"
-	"github.com/yetone/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/backup"
+	"github.com/robin-jiangdh/magpie/internal/edit"
 )
 
 // backupCmd writes every provider, setting, profile and agent model, and

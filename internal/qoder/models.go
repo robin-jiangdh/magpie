@@ -18,7 +18,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/yetone/magpie/internal/catalog"
+	"github.com/robin-jiangdh/magpie/internal/catalog"
 )
 
 // ModelInfo is one entry of the model-list response's "chat" array. Only the

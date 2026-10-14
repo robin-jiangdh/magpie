@@ -3,7 +3,7 @@ package agent
 import (
 	"testing"
 
-	"github.com/yetone/magpie/internal/usage"
+	"github.com/robin-jiangdh/magpie/internal/usage"
 )
 
 // Every agent's requests are told by what its own description says.

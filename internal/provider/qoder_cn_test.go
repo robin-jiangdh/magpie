@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/yetone/magpie/internal/qoder"
+	"github.com/robin-jiangdh/magpie/internal/qoder"
 )
 
 // qoderSiteClient is qoderTestClient keeping each request's real host, so a

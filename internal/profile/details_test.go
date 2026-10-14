@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/library"
+	"github.com/robin-jiangdh/magpie/internal/library"
 )
 
 // A profile's details are its fields by agent, in the order magpie lists the

@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/yetone/magpie/internal/testenv"
+	"github.com/robin-jiangdh/magpie/internal/testenv"
 )
 
 // TestDevinSignedInOnlyInMagpie is 蓝猫's Devin on Discord: the CLI kept a

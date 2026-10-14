@@ -12,7 +12,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/yetone/magpie/internal/provider"
+	"github.com/robin-jiangdh/magpie/internal/provider"
 )
 
 // kiroMsg encodes one event-stream message, the way Kiro sends them.

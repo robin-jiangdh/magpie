@@ -25,8 +25,8 @@ import (
 	"time"
 
 	"github.com/Calcium-Ion/moejs"
-	"github.com/yetone/magpie/internal/jsmod"
-	"github.com/yetone/magpie/internal/plugin"
+	"github.com/robin-jiangdh/magpie/internal/jsmod"
+	"github.com/robin-jiangdh/magpie/internal/plugin"
 )
 
 // How long a hook may run before it is stopped and its input kept as it

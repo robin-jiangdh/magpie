@@ -10,8 +10,8 @@ import (
 	"slices"
 	"time"
 
-	"github.com/yetone/magpie/internal/backup"
-	"github.com/yetone/magpie/internal/edit"
+	"github.com/robin-jiangdh/magpie/internal/backup"
+	"github.com/robin-jiangdh/magpie/internal/edit"
 )
 
 // ErrOff is a Restore, Undo or SetAuto asked for with sync off.

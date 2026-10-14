@@ -9,7 +9,7 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"github.com/yetone/magpie/internal/pluginrt"
+	"github.com/robin-jiangdh/magpie/internal/pluginrt"
 )
 
 // builtinCmd: `magpie plugin builtin [on|off <id>]` — magpie's built-in

@@ -20,7 +20,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yetone/magpie/internal/wslrun"
+	"github.com/robin-jiangdh/magpie/internal/wslrun"
 )
 
 // isSelf is whether s is magpie's own image server, whatever its binary.

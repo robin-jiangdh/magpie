@@ -9,10 +9,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yetone/magpie/internal/agent"
-	"github.com/yetone/magpie/internal/fx"
-	"github.com/yetone/magpie/internal/settings"
-	stats "github.com/yetone/magpie/internal/usage"
+	"github.com/robin-jiangdh/magpie/internal/agent"
+	"github.com/robin-jiangdh/magpie/internal/fx"
+	"github.com/robin-jiangdh/magpie/internal/settings"
+	stats "github.com/robin-jiangdh/magpie/internal/usage"
 )
 
 // costCurrency and costRate are cost's currency and, for cny, the
