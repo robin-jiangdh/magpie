@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"net/url"
 	"os"
@@ -20,25 +21,26 @@ type Note struct {
 	URL     string `json:"url,omitempty"`
 }
 
-// NotesFeed is where the notes of past releases are listed: beside the
-// update feed, on magpie's site. MAGPIE_NOTES_FEED points it elsewhere.
+// NotesFeed is where the notes of past releases are listed: the repo's
+// releases on GitHub. MAGPIE_NOTES_FEED points it elsewhere.
 func NotesFeed() string {
 	if f := os.Getenv("MAGPIE_NOTES_FEED"); f != "" {
 		return f
 	}
-	return Site + "/api/notes"
+	return apiBase + "/releases?per_page=100"
 }
 
 // ReleasePage is version's page on GitHub, where its notes are when the
-// site can't give them (#661).
+// feed can't give them (#661).
 func ReleasePage(version string) string {
-	return "https://github.com/yetone/magpie-releases/releases/tag/v" + strings.TrimPrefix(strings.TrimSpace(version), "v")
+	return "https://github.com/" + repo + "/releases/tag/v" + strings.TrimPrefix(strings.TrimSpace(version), "v")
 }
 
-// NotesBetween asks the site for the notes of every release after after
+// NotesBetween asks the feed for the notes of every release after after
 // (none when "") up to and including upto, newest first, in lang (see
 // InLang).
 func NotesBetween(ctx context.Context, after, upto, lang string) ([]Note, error) {
+	feed := NotesFeed()
 	q := url.Values{"upto": {upto}}
 	if after != "" {
 		q.Set("after", after)
@@ -46,10 +48,19 @@ func NotesBetween(ctx context.Context, after, upto, lang string) ([]Note, error)
 	if lang != "" {
 		q.Set("lang", lang)
 	}
-	req, err := http.NewRequestWithContext(ctx, "GET", NotesFeed()+"?"+q.Encode(), nil)
+	u := feed
+	if eq := q.Encode(); eq != "" {
+		if strings.Contains(u, "?") {
+			u += "&" + eq
+		} else {
+			u += "?" + eq
+		}
+	}
+	req, err := http.NewRequestWithContext(ctx, "GET", u, nil)
 	if err != nil {
 		return nil, err
 	}
+	req.Header.Set("User-Agent", githubUserAgent)
 	res, err := client.Do(req)
 	if err != nil {
 		return nil, err
@@ -58,16 +69,48 @@ func NotesBetween(ctx context.Context, after, upto, lang string) ([]Note, error)
 	if res.StatusCode != 200 {
 		return nil, fmt.Errorf("release notes: %s", res.Status)
 	}
+	body, err := io.ReadAll(io.LimitReader(res.Body, 8<<20))
+	if err != nil {
+		return nil, fmt.Errorf("release notes: %w", err)
+	}
 	var out struct {
 		Releases []Note `json:"releases"`
 	}
-	if err := json.NewDecoder(res.Body).Decode(&out); err != nil {
+	if isGitHubReleasesList(body) {
+		// GitHub answers with a bare array of release objects; the
+		// filtering below (Between) is the same either way.
+		var gs []githubRelease
+		if err := json.Unmarshal(body, &gs); err != nil {
+			return nil, fmt.Errorf("release notes: %w", err)
+		}
+		for _, g := range gs {
+			out.Releases = append(out, Note{
+				Version: strings.TrimPrefix(strings.TrimSpace(g.TagName), "v"),
+				Notes:   g.Body,
+				URL:     g.HTMLURL,
+			})
+		}
+	} else if err := json.Unmarshal(body, &out); err != nil {
 		return nil, fmt.Errorf("release notes: %w", err)
 	}
 	for i := range out.Releases {
 		out.Releases[i].Notes = InLang(out.Releases[i].Notes, lang)
 	}
 	return Between(out.Releases, after, upto), nil
+}
+
+// isGitHubReleasesList reports whether body is GitHub's releases array
+// rather than the notes feed's {"releases": [...]} object.
+func isGitHubReleasesList(body []byte) bool {
+	for _, b := range body {
+		switch b {
+		case ' ', '\t', '\n', '\r':
+			continue
+		default:
+			return b == '['
+		}
+	}
+	return false
 }
 
 // zhMarker is where a release's notes turn from English to Chinese: the
