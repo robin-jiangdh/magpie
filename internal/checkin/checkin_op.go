@@ -8,6 +8,10 @@ import (
 	"time"
 )
 
+// checkinLog matches a quota-log record that is a check-in bonus, the way
+// New API's system log (type 4) phrases it.
+var checkinLog = regexp.MustCompile(`(?i)签到|check.?in`)
+
 // failOutcome builds a failed Outcome, carrying the session out even in
 // failure: a JWT fork may have rotated its refresh cookie a moment ago,
 // and dropping it bricks the account.
@@ -143,7 +147,6 @@ func checkInEndpoint(ctx context.Context, login Login, site SiteInfo) Outcome {
 		BeforeQuota: usdOf(before, site.QuotaPerUnit),
 		AfterQuota:  afterQuota,
 		Session:     j.value("session"),
-		AccessToken: login.AccessToken,
 		APIUser:     adopted,
 		Awarded:     usdRaw(granted["quota_awarded"], site.QuotaPerUnit),
 	}
@@ -221,8 +224,8 @@ func ifBool(v any) bool {
 
 // CheckinStatus GETs a fork's check-in status route. It performs no
 // check-in; its whole contract is "cannot say" on any trouble.
-func CheckinStatus(ctx context.Context, site SiteInfo, creds Creds) CheckinStatus {
-	empty := CheckinStatus{}
+func CheckinStatus(ctx context.Context, site SiteInfo, creds Creds) CheckinStatusInfo {
+	empty := CheckinStatusInfo{}
 	if site.StatusPath == "" {
 		return empty
 	}
@@ -261,7 +264,7 @@ func CheckinStatus(ctx context.Context, site SiteInfo, creds Creds) CheckinStatu
 			}
 		}
 	}
-	out := CheckinStatus{
+	out := CheckinStatusInfo{
 		AwardedToday: usdRaw(awarded, site.QuotaPerUnit),
 	}
 	if t, ok := stats["checked_in_today"].(bool); ok {
