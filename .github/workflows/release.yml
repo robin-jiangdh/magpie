@@ -1,6 +1,6 @@
 name: Release
 
-# Pushing a v* tag hands off to yetone/magpie-releases, which builds, signs,
+# Pushing a v* tag hands off to robin-jiangdh/magpie-releases, which builds, signs,
 # notarises and publishes magpie there; that repo is where people download
 # from, and the signing secrets live only there. Once its release has every
 # asset, the same release is copied here, so this repo's Releases page has
@@ -47,14 +47,14 @@ jobs:
       - name: Trigger release workflow in magpie-releases
         uses: peter-evans/repository-dispatch@v3
         with:
-          # PAT with contents write on yetone/magpie-releases.
+          # PAT with contents write on robin-jiangdh/magpie-releases.
           token: ${{ secrets.RELEASES_REPO_TOKEN }}
-          repository: yetone/magpie-releases
+          repository: robin-jiangdh/magpie-releases
           event-type: release
           client-payload: '{"ref": "${{ steps.version.outputs.ref }}", "version": "${{ steps.version.outputs.version }}"}'
 
       - name: Output status
-        run: echo "Watch the build at https://github.com/yetone/magpie-releases/actions"
+        run: echo "Watch the build at https://github.com/robin-jiangdh/magpie-releases/actions"
 
   mirror-release:
     needs: trigger-release
@@ -70,7 +70,7 @@ jobs:
       - name: Wait for magpie-releases to publish every asset
         run: |
           for i in $(seq 1 120); do
-            n=$(gh release view "$REF" -R yetone/magpie-releases --json assets -q '.assets | length' 2>/dev/null || echo 0)
+            n=$(gh release view "$REF" -R robin-jiangdh/magpie-releases --json assets -q '.assets | length' 2>/dev/null || echo 0)
             echo "attempt $i: $n of $ASSETS assets"
             [ "$n" -ge "$ASSETS" ] && exit 0
             sleep 30
@@ -82,9 +82,9 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p dist
-          gh release download "$REF" -R yetone/magpie-releases -D dist
-          gh release view "$REF" -R yetone/magpie-releases --json body -q .body > notes.md
-          printf '\n\n---\nThe same release, and the feed magpie updates from: https://github.com/yetone/magpie-releases/releases/tag/%s\n' "$REF" >> notes.md
+          gh release download "$REF" -R robin-jiangdh/magpie-releases -D dist
+          gh release view "$REF" -R robin-jiangdh/magpie-releases --json body -q .body > notes.md
+          printf '\n\n---\nThe same release, and the feed magpie updates from: https://github.com/robin-jiangdh/magpie-releases/releases/tag/%s\n' "$REF" >> notes.md
           if gh release view "$REF" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             gh release edit "$REF" -R "$GITHUB_REPOSITORY" --notes-file notes.md
             gh release upload "$REF" dist/* -R "$GITHUB_REPOSITORY" --clobber
