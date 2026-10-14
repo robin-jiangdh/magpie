@@ -84,7 +84,7 @@ func NotesBetween(ctx context.Context, after, upto, lang string) ([]Note, error)
 			return nil, fmt.Errorf("release notes: %w", err)
 		}
 		for _, g := range gs {
-			out.Releases = append(out, Note{
+			out.Releases = append(out.Releases, Note{
 				Version: strings.TrimPrefix(strings.TrimSpace(g.TagName), "v"),
 				Notes:   g.Body,
 				URL:     g.HTMLURL,
